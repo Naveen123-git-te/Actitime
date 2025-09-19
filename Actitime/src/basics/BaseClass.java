@@ -1,4 +1,4 @@
-package com.actitime.generic;
+package basics;
 
 import java.io.IOException;
 import java.time.Duration;
@@ -28,7 +28,7 @@ public class BaseClass {
 		 driver.manage().window().maximize();
 		 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		 
-		 String url=f.readPropertyFile("url");
+		 String url=f.readPropertyData("url");
 		 System.out.println("The url is"+url);
 		 driver.get(url);
 	//	 driver.get("http://localhost:3434/login.do");
@@ -46,8 +46,8 @@ public class BaseClass {
 public void Login() throws IOException {
 	
 	LoginPage loginpage= new LoginPage(driver);
-	String username=f.readPropertyFile("username");
-	String password =f.readPropertyFile("password");
+	String username=f.readPropertyData("username");
+	String password =f.readPropertyData("password");
 	
 	loginpage.setLogin(username, password);
 
@@ -66,7 +66,7 @@ public void Login() throws IOException {
 public void Logout() {
 	
 	HomePage homepage =new HomePage(driver);
-	homepage.setLogoutBtn();
+//	homepage.setLogoutBtn();
 	/* Handled in HomePage POM Class 
 	driver.findElement(By.id("logoutLink")).click();;
 	 */
